@@ -14,9 +14,15 @@ def artist_search(artist="Kid Cudi",sp=sp):
         artist_object = items[0]
     return artist_object
 
-def song_search(song="What Makes You Beautiful",sp=sp):
-    result = sp.search('song:' + song,type="song")
-    items = result['songs']['items']
+def song_search(song="the other side of the door",artist="NA",sp=sp):
+    p = 'track:' + song
+    if artist != "NA":
+        p = 'artist:' + artist + ' ' + p
+    result = sp.search(q=p ,type="track")
+    items = result['tracks']['items']
     if len(items) > 0:
         song_object = items[0]
     return song_object
+
+
+pprint.pprint(song_search("happier than ever"))
